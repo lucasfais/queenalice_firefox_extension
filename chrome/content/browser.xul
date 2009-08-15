@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<overlay id="queenalice" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<script src="chrome://queenalice/content/browser.js" type="application/javascript"/>
+	<statusbar id="status-bar">
+  	<statusbarpanel id="my-panel" label="X 0" onclick="queenalice.init()"/>
+ 	</statusbar>
+</overlay>
