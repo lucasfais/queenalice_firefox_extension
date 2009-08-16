@@ -1,23 +1,20 @@
+const QUEENALICE_MYGAMES_URL = 'http://www.queenalice.com/mygames.php';
+var prefservice = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces['nsIPrefService']).getBranch('extensions.queenalice.');
 
 var queenalice = {
-  MYGAMES_URL: 'http://www.queenalice.com/mygames.php',
-  username: "",
-  password: "",
-  prefservice: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces['nsIPrefService']).getBranch('extensions.queenalice.'),
   
   init: function() {
+    prefservice.QueryInterface(Components.interfaces.nsIPrefBranch2);
+    prefservice.addObserver("", this, false);
 
-    this.prefservice.QueryInterface(Components.interfaces.nsIPrefBranch2);
-    this.prefservice.addObserver("", this, false);
-
-    this.username = this.prefservice.getCharPref('username');
-    this.password = this.prefservice.getCharPref('password');
-    
     this.get_pending_games();
   },
   
   get_pending_games: function() {
-    $.post(queenalice.MYGAMES_URL, {username: queenalice.username, password: queenalice.password}, function(data){
+    var username = prefservice.getCharPref('username');
+    var password = prefservice.getCharPref('password');
+    
+    $.post(QUEENALICE_MYGAMES_URL, {username: username, password: password}, function(data){
 
       var gamesWaintingRe = new RegExp("(\\d+) games? waiting", "g");
       var gamesWaitingMatches = gamesWaintingRe.exec(data);
@@ -44,12 +41,10 @@ var queenalice = {
   },
   
   open_mygames: function () {
-    gBrowser.selectedTab = getBrowser().addTab(this.MYGAMES_URL); 
+    gBrowser.selectedTab = getBrowser().addTab(QUEENALICE_MYGAMES_URL); 
   },
   
   observe: function() {
-    this.username = this.prefservice.getCharPref('username');
-    this.password = this.prefservice.getCharPref('password');
     this.get_pending_games();
   }
 }
