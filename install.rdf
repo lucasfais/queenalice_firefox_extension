@@ -19,10 +19,10 @@
     </em:targetApplication>
    
     <!-- Front End MetaData -->
-    <em:name>QueenAliceManager</em:name>
+    <em:name>QueenAlice Firefox Extension</em:name>
     <em:description>Shows the games that are waiting for your move</em:description>
-    <em:creator>Lucas Fais</em:creator>
-    <em:homepageURL>http://www.example.com/</em:homepageURL>
+    <em:creator>Lucas Fais & Eric Fer</em:creator>
+    <em:homepageURL>http://www.queenalice.com/</em:homepageURL>
 
 		<em:optionsURL>chrome://queenalice/content/options.xul</em:optionsURL>
   </Description>      
