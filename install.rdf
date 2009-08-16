@@ -21,7 +21,7 @@
     <!-- Front End MetaData -->
     <em:name>QueenAlice Firefox Extension</em:name>
     <em:description>Shows the games that are waiting for your move</em:description>
-    <em:creator>Lucas Fais & Eric Fer</em:creator>
+    <em:creator>Lucas Fais and Eric Fer</em:creator>
     <em:homepageURL>http://www.queenalice.com/</em:homepageURL>
 
 		<em:optionsURL>chrome://queenalice/content/options.xul</em:optionsURL>
