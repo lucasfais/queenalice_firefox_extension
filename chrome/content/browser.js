@@ -1,5 +1,5 @@
 
-queenalice = {
+var queenalice = {
   MYGAMES_URL: 'http://www.queenalice.com/mygames.php',
   username: "",
   password: "",
@@ -17,16 +17,16 @@ queenalice = {
   },
   
   get_pending_games: function() {
-    $.post(this.MYGAMES_URL, {username: this.username, password: this.password}, function(data){
+    $.post(queenalice.MYGAMES_URL, {username: queenalice.username, password: queenalice.password}, function(data){
 
-      var yourMoveRe = new RegExp("Your move", "g");
-      var yourMoveMatches = data.match(yourMoveRe);
+      var gamesWaintingRe = new RegExp("(\\d+) games? waiting", "g");
+      var gamesWaitingMatches = gamesWaintingRe.exec(data);
 
       var panel_text = '';
       var panel_tooltip = 'None game waiting your move';
-      if (yourMoveMatches && yourMoveMatches.length > 0) {
-        panel_text = yourMoveMatches.length;
-        panel_tooltip = yourMoveMatches.length + " game(s) waiting your move"
+      if (gamesWaitingMatches && gamesWaitingMatches.length > 0) {
+        panel_text = gamesWaitingMatches[1];
+        panel_tooltip = gamesWaitingMatches[0] + ' your move';
       }
       else {
         var invalidLoginRe = new RegExp("Invalid username or password", "g");
