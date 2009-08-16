@@ -1,0 +1,5 @@
+#queenalice-status_panel > label 
+{ 
+  background: url(chrome://queenalice/content/logo.ico) no-repeat left;
+  padding-left: 20px;
+}

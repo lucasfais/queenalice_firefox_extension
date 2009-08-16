@@ -1,8 +1,14 @@
 <?xml version="1.0"?>
 
+<?xml-stylesheet href="chrome://queenalice/content/browser.css" type="text/css"?>
+
 <overlay id="queenalice" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-	<script src="chrome://queenalice/content/browser.js" type="application/javascript"/>
+	
+	<script type="application/x-javascript" src="chrome://queenalice/content/jquery-1.3.2.js" />
+	<script type="application/javascript" src="chrome://queenalice/content/browser.js" />
+
 	<statusbar id="status-bar">
-  	<statusbarpanel id="my-panel" label="X 0" onclick="queenalice.init()"/>
+  	<statusbarpanel id="queenalice-status_panel" label="" onclick="queenalice.open_mygames()" class="queenalice_status_panel" tooltiptext="Not logged in"/>
  	</statusbar>
+
 </overlay>

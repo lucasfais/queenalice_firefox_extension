@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+ 
+<prefwindow id="queenalice_ext-prefs" title="QueenAlice Extension Options" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+ 
+<prefpane id="queenalice_ext-pane" label="Stock Settings">
+  <preferences>
+    <preference id="pref_username" name="extensions.queenalice.username" type="string"/>
+		<preference id="pref_password" name="extensions.queenalice.password" type="string"/>
+  </preferences>
+ 
+  <hbox align="center">
+    <label control="symbol" value="Username: "/><br/>
+    <textbox preference="pref_username" id="symbol" />
+  </hbox>
+
+	<hbox align="center">
+    <label control="symbol" value="Password: "/>
+    <textbox preference="pref_password" id="symbol" type="password"/>
+  </hbox>
+
+	<button label="Close" accesskey="" oncommand="" />
+			
+</prefpane>
+ 
+</prefwindow>
