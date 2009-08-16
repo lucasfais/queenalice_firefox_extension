@@ -1,24 +1,48 @@
 <?xml version="1.0"?>
  
-<prefwindow id="queenalice_ext-prefs" title="QueenAlice Extension Options" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<prefwindow id="queenalice-prefs" title="QueenAlice Extension Preferences" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
  
-<prefpane id="queenalice_ext-pane" label="Stock Settings">
+<prefpane id="queenalice_ext-pane" label="QueenAlice Account Settings">
   <preferences>
     <preference id="pref_username" name="extensions.queenalice.username" type="string"/>
 		<preference id="pref_password" name="extensions.queenalice.password" type="string"/>
   </preferences>
- 
-  <hbox align="center">
-    <label control="symbol" value="Username: "/><br/>
-    <textbox preference="pref_username" id="symbol" />
-  </hbox>
 
-	<hbox align="center">
-    <label control="symbol" value="Password: "/>
-    <textbox preference="pref_password" id="symbol" type="password"/>
-  </hbox>
+	<groupbox>
+		<caption label="Account Details" />
 
-	<button label="Close" accesskey="" oncommand="" />
+		<grid flex="1">
+			<columns>
+				<column />
+				<column flex="1" />
+			</columns>
+
+			<rows>
+
+				<row align="center">
+					<label value="Username" control="queenalice_username" />
+
+					<textbox id="queenalice_username" preference="pref_username"/>
+				</row>
+
+				<row align="center">
+					<label value="Password" control="queenalice_password" />
+					<textbox id="queenalice_password" type="password" preference="pref_password"/>
+				</row>
+
+			</rows>
+		</grid>
+
+	</groupbox>
+
+	
+	
+	<!-- Footer -->
+	<hbox class="gm-footer">
+		<hbox align="right" flex="1">
+			<button label="Close" accesskey="" oncommand="self.close();" />
+		</hbox>
+	</hbox>
 			
 </prefpane>
  
