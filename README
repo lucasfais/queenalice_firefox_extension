@@ -1,8 +1,8 @@
-<h1>QueenAlice Firefox Extension</h1>
+QueenAlice Firefox Extension
 
-h3. A Firefox Extension for QueenAlice.
+A Firefox Extension for QueenAlice.
 
-h3. TODO
-* Store the password in a safe
-* After sleep of the computer, the extension doesn't work
-* Improve design of the display of preferences
+TODO:
+	* Store the password in a safe
+	* After sleep of the computer, the extension doesn't work
+	* Improve design of the display of preferences
