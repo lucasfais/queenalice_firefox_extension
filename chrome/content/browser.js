@@ -51,5 +51,5 @@ var queenalice = {
  
 $(document).ready(function(){
   queenalice.init();
-  window.setInterval(queenalice.get_pending_games, 3*60*1000);
+  window.setInterval(queenalice.get_pending_games, 2*60*1000);
 });
