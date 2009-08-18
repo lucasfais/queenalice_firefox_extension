@@ -1,4 +1,4 @@
-const QUEENALICE_MYGAMES_URL = 'http://www.queenalice.com/mygames.php';
+const QUEENALICE_GAMES_URL = 'http://www.queenalice.com/game.php';
 var prefservice = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces['nsIPrefService']).getBranch('extensions.queenalice.');
 
 var queenalice = {
@@ -14,7 +14,7 @@ var queenalice = {
     var username = prefservice.getCharPref('username');
     var password = prefservice.getCharPref('password');
     
-    $.post(QUEENALICE_MYGAMES_URL, {username: username, password: password}, function(data){
+    $.post(QUEENALICE_GAMES_URL, {username: username, password: password}, function(data){
 
       var gamesWaintingRe = new RegExp("(\\d+) games? waiting", "g");
       var gamesWaitingMatches = gamesWaintingRe.exec(data);
@@ -41,7 +41,7 @@ var queenalice = {
   },
   
   open_mygames: function () {
-    gBrowser.selectedTab = getBrowser().addTab(QUEENALICE_MYGAMES_URL); 
+    gBrowser.selectedTab = getBrowser().addTab(QUEENALICE_GAMES_URL); 
   },
   
   observe: function() {
