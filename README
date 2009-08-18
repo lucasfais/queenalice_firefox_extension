@@ -4,5 +4,4 @@ A Firefox Extension for QueenAlice.
 
 TODO:
 	* Store the password in a safe
-	* After sleep of the computer, the extension doesn't work
-	* Improve design of the display of preferences
+	* Improve design of the preferences pane
