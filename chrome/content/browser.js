@@ -12,7 +12,7 @@ var queenalice = {
   get_pending_games: function() {
     
     var panel_text = '';
-    var panel_tooltip = 'Set up account on preferences';
+    var panel_tooltip = 'Set up an account on Preferences';
     var loginInfo = queenaliceAccount.get_login_info();
     
     if (loginInfo) {
@@ -22,7 +22,7 @@ var queenalice = {
         var gamesWaitingMatches = gamesWaintingRe.exec(data);
 
         var panel_text = '';
-        var panel_tooltip = 'None game waiting your move';
+        var panel_tooltip = 'No game waiting your move';
         
         if (gamesWaitingMatches && gamesWaitingMatches.length > 0) {
           panel_text = gamesWaitingMatches[1];
