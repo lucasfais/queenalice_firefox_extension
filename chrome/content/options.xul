@@ -3,11 +3,10 @@
 <prefwindow id="queenalice-prefs" title="QueenAlice Extension Preferences" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
  
 <prefpane id="queenalice_ext-pane" label="QueenAlice Account Settings">
-  <preferences>
-    <preference id="pref_username" name="extensions.queenalice.username" type="string"/>
-		<preference id="pref_password" name="extensions.queenalice.password" type="string"/>
-  </preferences>
 
+	<script type="application/javascript" src="chrome://queenalice/content/account.js" />
+	<script type="application/javascript" src="chrome://queenalice/content/options.js" />
+	
 	<groupbox>
 		<caption label="Account Details" />
 
@@ -21,29 +20,27 @@
 
 				<row align="center">
 					<label value="Username" control="queenalice_username" />
-
-					<textbox id="queenalice_username" preference="pref_username"/>
+					<textbox id="queenalice_username"/>
 				</row>
 
 				<row align="center">
 					<label value="Password" control="queenalice_password" />
-					<textbox id="queenalice_password" type="password" preference="pref_password"/>
+					<textbox id="queenalice_password" type="password" />
 				</row>
 
 			</rows>
 		</grid>
 
 	</groupbox>
-
-	
 	
 	<!-- Footer -->
 	<hbox class="gm-footer">
 		<hbox align="right" flex="1">
-			<button label="Close" accesskey="" oncommand="self.close();" />
+			<button label="Cancel" accesskey="" oncommand="queenaliceOptions.cancel();" />
+			<button label="Ok" accesskey="" oncommand="queenaliceOptions.ok();" />
 		</hbox>
 	</hbox>
 			
 </prefpane>
- 
+
 </prefwindow>

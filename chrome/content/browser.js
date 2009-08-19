@@ -1,47 +1,61 @@
-const QUEENALICE_GAMES_URL = 'http://www.queenalice.com/game.php';
-var prefservice = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces['nsIPrefService']).getBranch('extensions.queenalice.');
+const QUEENALICE_URL = 'http://www.queenalice.com'
+const QUEENALICE_GAME_URL = QUEENALICE_URL + '/game.php';
+const QUEENALICE_MYGAMES_URL = QUEENALICE_URL + '/mygames.php';
 
 var queenalice = {
   
   init: function() {
-    prefservice.QueryInterface(Components.interfaces.nsIPrefBranch2);
-    prefservice.addObserver("", this, false);
-
+    this.registerLoginObserver();
     this.get_pending_games();
   },
   
   get_pending_games: function() {
-    var username = prefservice.getCharPref('username');
-    var password = prefservice.getCharPref('password');
     
-    $.post(QUEENALICE_GAMES_URL, {username: username, password: password}, function(data){
+    var panel_text = '';
+    var panel_tooltip = 'Set up account on preferences';
+    var loginInfo = queenaliceAccount.get_login_info();
+    
+    if (loginInfo) {
+      $.post(QUEENALICE_MYGAMES_URL, {username: loginInfo.username, password: loginInfo.password}, function(data){
 
-      var gamesWaintingRe = new RegExp("(\\d+) games? waiting", "g");
-      var gamesWaitingMatches = gamesWaintingRe.exec(data);
+        var gamesWaintingRe = new RegExp("(\\d+) games? waiting", "g");
+        var gamesWaitingMatches = gamesWaintingRe.exec(data);
 
-      var panel_text = '';
-      var panel_tooltip = 'None game waiting your move';
-      if (gamesWaitingMatches && gamesWaitingMatches.length > 0) {
-        panel_text = gamesWaitingMatches[1];
-        panel_tooltip = gamesWaitingMatches[0] + ' your move';
-      }
-      else {
-        var invalidLoginRe = new RegExp("Invalid username or password", "g");
-        var invalidLoginMatches = data.match(invalidLoginRe);
-
-        if (invalidLoginMatches && invalidLoginMatches.length > 0) {
-          panel_tooltip = "Invalid username or password";
+        var panel_text = '';
+        var panel_tooltip = 'None game waiting your move';
+        
+        if (gamesWaitingMatches && gamesWaitingMatches.length > 0) {
+          panel_text = gamesWaitingMatches[1];
+          panel_tooltip = gamesWaitingMatches[0] + ' your move';
         }
-      }
+        else {
+          var invalidLoginRe = new RegExp("Invalid username or password", "g");
+          var invalidLoginMatches = data.match(invalidLoginRe);
 
-      var panel = document.getElementById('queenalice-status_panel');
-      panel.label = panel_text;
-      panel.setAttribute("tooltiptext", panel_tooltip);
-    });
+          if (invalidLoginMatches && invalidLoginMatches.length > 0) {
+            panel_tooltip = "Invalid username or password";
+          }
+        }
+
+        var panel = document.getElementById('queenalice-status_panel');
+        panel.label = panel_text;
+        panel.setAttribute("tooltiptext", panel_tooltip);
+      });
+    }
+    
+    var panel = document.getElementById('queenalice-status_panel');
+    panel.label = panel_text;
+    panel.setAttribute("tooltiptext", panel_tooltip);
   },
   
   open_mygames: function () {
-    gBrowser.selectedTab = getBrowser().addTab(QUEENALICE_GAMES_URL); 
+    gBrowser.selectedTab = getBrowser().addTab(QUEENALICE_GAME_URL); 
+  },
+  
+  registerLoginObserver: function() {
+    var observerService = Components.classes["@mozilla.org/observer-service;1"]
+                          .getService(Components.interfaces.nsIObserverService);
+    observerService.addObserver(this, "passwordmgr-storage-changed", false);
   },
   
   observe: function() {

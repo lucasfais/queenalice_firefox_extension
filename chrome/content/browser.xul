@@ -5,6 +5,7 @@
 <overlay id="queenalice" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	
 	<script type="application/x-javascript" src="chrome://queenalice/content/jquery-1.3.2.js" />
+	<script type="application/javascript" src="chrome://queenalice/content/account.js" />
 	<script type="application/javascript" src="chrome://queenalice/content/browser.js" />
 
 	<statusbar id="status-bar">
