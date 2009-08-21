@@ -2,5 +2,14 @@ QueenAlice Firefox Extension
 
 A Firefox Extension for QueenAlice.
 
+Authors:
+  Lucas Fais (http://www.github.com/luvasfais)
+  Eric Fer  (http://www.github.com/ericfer)
+  Tino Gomes  (http://www.github.com/tinogomes)
+  
 TODO:
 	* Improve design of the preferences pane
+	* Settings for interval check on preferences
+	* Access preferences via mouse right button
+	* Show Status on "Popup-like" when mouse over icon (Rating/Wins/Loses/Draws/Open games/Pending games)
+	* Show rating on status bar
